@@ -1,4 +1,5 @@
 'use client'
+import { Button } from "./_components/ui/button";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -9,7 +10,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-red-500">Hello World!</h1>
+      <Button variant='outline' className="bg-zinc-600 text-zinc-200">teste</Button>
     </main>
   );
 }
