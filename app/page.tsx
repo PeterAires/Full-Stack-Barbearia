@@ -2,7 +2,7 @@
 import { Input } from "./_components/ui/input";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
-import { SearchIcon } from "lucide-react";
+import { EyeIcon, FootprintsIcon, SearchIcon } from "lucide-react";
 import Image from "next/image";
 import { Card, CardContent } from "./_components/ui/card";
 import { Badge } from "./_components/ui/badge";
@@ -35,6 +35,32 @@ import BarberShopItem from "./_components/barbershop-item";
           <Input placeholder="Faça sua busca"/>
           <Button>
             <SearchIcon/>
+          </Button>
+        </div>
+        {/* Busca Rapída */}
+        <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden ">
+          <Button className="gap-2" variant='secondary'>
+            <Image src='/cabelo.png' alt="Cabelo" width={16} height={16}/>
+            Cabelo
+          </Button>
+
+          <Button className="gap-2" variant='secondary'>
+            <Image src='/barba.png' alt="Barba" width={16} height={16}/>
+            Barba
+          </Button>
+
+          <Button className="gap-2" variant='secondary'>
+            <Image src='/acabamento.png' alt="Acbamento" width={16} height={16}/>
+            Acabamento
+          </Button>
+          <Button className="gap-2" variant='secondary'>
+            <FootprintsIcon size={16}/>
+            Pezinho
+          </Button>
+
+          <Button className="gap-2" variant='secondary'>
+            <EyeIcon/>
+            Sobrancelha
           </Button>
         </div>
         {/* Imagem */}
