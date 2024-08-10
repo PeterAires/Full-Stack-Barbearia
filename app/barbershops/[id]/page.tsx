@@ -1,3 +1,4 @@
+import ServiceItem from "@/app/_components/service-item";
 import { Button } from "@/app/_components/ui/button";
 import { db } from "@/app/_lib/prisma";
 import { ChevronLeftIcon, MapIcon, MenuIcon, StarIcon } from "lucide-react";
@@ -15,8 +16,15 @@ const BarberShopPage = async ({ params }) => {
     const barbershop = await db.barbershop.findUnique({
         where:{
             id: params.id
+        },
+        //includes, traz os serviçoes dessa barbearia que está em outra tabela
+        include:{
+            services: true
         }
     })
+
+
+
     if (!barbershop) {
         return notFound()
     }
@@ -63,6 +71,12 @@ const BarberShopPage = async ({ params }) => {
             <div className="p-5 border-b border-solid space-y-2">
                 <h2 className="font-bold uppercase text-gray-400 text-xs">Sobre nós</h2>
                 <p className="text-sm text-justify">{barbershop?.description}</p>
+            </div>
+
+            <div className="p-5">
+                <h2 className="font-bold uppercase text-gray-400 text-xs">Serviços</h2>
+                {barbershop.services.map((service) => (
+                    <ServiceItem key={service.id} service={service} />))}
             </div>
         </div>
     );
