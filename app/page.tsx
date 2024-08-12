@@ -2,7 +2,7 @@
 import { Input } from "./_components/ui/input";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, Sheet } from "lucide-react";
 import Image from "next/image";
 import { db } from "./_lib/prisma";
 import BarberShopItem from "./_components/barbershop-item";
@@ -43,7 +43,11 @@ import { BookingItem } from "./_components/booking-item";
         <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden ">
           {quickSearchOptions.map((option) => (
             <Button key={option.title} className="gap-2" variant='secondary'>
-            <Image src={option.imageUrl} alt={option.title} width={16} height={16}/>
+            <Image 
+            src={option.imageUrl} 
+            alt={option.title} 
+            width={16} 
+            height={16}/>
             {option.title}
           </Button>
           ))}
@@ -70,7 +74,7 @@ import { BookingItem } from "./_components/booking-item";
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden ">
           {popularBarbershops.map(barbershop => <BarberShopItem key={barbershop.id} barbershop={barbershop}/>)}
         </div>
-      </div>  
+      </div> 
     </div>
   );
 }
