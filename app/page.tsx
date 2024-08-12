@@ -71,14 +71,7 @@ import { BookingItem } from "./_components/booking-item";
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden ">
           {popularBarbershops.map(barbershop => <BarberShopItem key={barbershop.id} barbershop={barbershop}/>)}
         </div>
-      </div>
-      <footer>
-        <Card>
-            <CardContent className="py-6 px-5">
-              <p className="text-sm text-gray-400">© 2024 Copyright <span className="font-bold">FSW Barber</span></p>
-            </CardContent>
-        </Card>
-      </footer>
+      </div>  
     </div>
   );
 }

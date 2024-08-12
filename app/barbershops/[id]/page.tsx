@@ -1,7 +1,8 @@
+import PhoneItem from "@/app/_components/phone-item";
 import ServiceItem from "@/app/_components/service-item";
 import { Button } from "@/app/_components/ui/button";
 import { db } from "@/app/_lib/prisma";
-import { ChevronLeftIcon, MapIcon, MenuIcon, StarIcon } from "lucide-react";
+import { ChevronLeftIcon, MapIcon, MenuIcon, PhoneIcon, SmartphoneIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -54,6 +55,7 @@ const BarberShopPage = async ({ params }) => {
                 </Button>
             </div>
 
+            {/* Titulo */}
             <div className="p-5 border-b border-solid ">
                 <h1 className="font-bold text-x mb-3">{barbershop.name}</h1>
 
@@ -67,18 +69,27 @@ const BarberShopPage = async ({ params }) => {
                     <p className="text-sm">5,0 (499 Avaliações) </p>
                 </div>
             </div>
+
            {/* Descrição */}
             <div className="p-5 border-b border-solid space-y-2">
                 <h2 className="font-bold uppercase text-gray-400 text-xs">Sobre nós</h2>
                 <p className="text-sm text-justify">{barbershop?.description}</p>
             </div>
 
-            <div className="p-5 space-y-3">
+            {/* Serviços */}
+            <div className="p-5 space-y-3 border-b border-solid">
                 <h2 className="font-bold uppercase text-gray-400 text-xs ">Serviços</h2>
                 <div className="space-y-3">
                     {barbershop.services.map((service) => (
                         <ServiceItem key={service.id} service={service} />))}
                 </div>
+            </div>
+
+            {/* Contato */}
+            <div className=" p-5 space-y-3">
+                {barbershop.phones.map((phone) => (
+                    <PhoneItem phone={phone}/>
+                ))}
             </div>
         </div>
     );
