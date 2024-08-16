@@ -8,18 +8,22 @@ import { db } from "./_lib/prisma";
 import BarberShopItem from "./_components/barbershop-item";
 import { quickSearchOptions } from "./_constants/search";
 import { BookingItem } from "./_components/booking-item";
+import { useEffect, useState } from "react";
 
 
 
 
  const Home = async () => {
   //Chamar meu banco de dados
-  const barbershops = await db.barbershop.findMany({})
-  const popularBarbershops = await db.barbershop.findMany({
-    orderBy:{
-      name: 'desc'
-    }
-  })
+  const [barbershops, setBarbershops] = useState<any>([]);
+const [popularBarbershops, setPopularBarbershops] = useState<any>([]);
+useEffect(() => {
+(async () => {
+const resultBarbershops = await db.barbershop.findMany({}); const resultPopularBarbershops = await db.barbershop.findMany({ orderBy: { name: "desc",
+}});
+setBarbershops(resultBarbershops); setPopularBarbershops(resultPopularBarbershops); })();
+},);
+
 
   console.log({ barbershops })
   return (
