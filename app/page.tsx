@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 
 
  const Home = async () => {
-  //Chamar meu banco de dadosss
+  //Chamar meu banco de dadossss
   const [barbershops, setBarbershops] = useState<any>([]);
   const [popularBarbershops, setPopularBarbershops] = useState<any>([]);
   useEffect(() => {
