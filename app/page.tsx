@@ -14,12 +14,13 @@ import { useEffect, useState } from "react";
 
 
  const Home = async () => {
-  //Chamar meu banco de dadossss
+  //Chamar meu banco de dadosssss
   const [barbershops, setBarbershops] = useState<any>([]);
   const [popularBarbershops, setPopularBarbershops] = useState<any>([]);
   useEffect(() => {
   (async () => {
-  const resultBarbershops = await db.barbershop.findMany({}); const resultPopularBarbershops = await db.barbershop.findMany({ orderBy: { name: "desc",
+  const resultBarbershops = await db.barbershop.findMany({}); 
+  const resultPopularBarbershops = await db.barbershop.findMany({ orderBy: { name: "desc",
   }});
   setBarbershops(resultBarbershops);
   setPopularBarbershops(resultPopularBarbershops); })();
