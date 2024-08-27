@@ -1,16 +1,12 @@
 import { Input } from "./_components/ui/input";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
-import { SearchIcon, Sheet } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import Image from "next/image";
 import { db } from "./_lib/prisma";
 import BarberShopItem from "./_components/barbershop-item";
 import { quickSearchOptions } from "./_constants/search";
 import { BookingItem } from "./_components/booking-item";
-import { useEffect, useState } from "react";
-import { Barbershop } from "@prisma/client";
-import { Card, CardContent } from "./_components/ui/card";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./_components/ui/dialog";
 
 
  const Home = async () => {
@@ -64,7 +60,7 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./_components
           Recomendados
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden ">
-        {barbershops.map(barbershop => <BarberShopItem key={barbershop} barbershop={barbershop}/>)}
+        {barbershops.map(barbershop => <BarberShopItem key={barbershop.id} barbershop={barbershop}/>)}
         </div>
 
         <h2 className="mb-3 mt-6 uppercase text-xs font-bold text-gray-400 ">

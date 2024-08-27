@@ -1,3 +1,4 @@
+'use client'
 import { Barbershop } from "@prisma/client";
 import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
