@@ -1,4 +1,3 @@
-'use client'
 import { Input } from "./_components/ui/input";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
@@ -10,6 +9,8 @@ import { quickSearchOptions } from "./_constants/search";
 import { BookingItem } from "./_components/booking-item";
 import { useEffect, useState } from "react";
 import { Barbershop } from "@prisma/client";
+import { Card, CardContent } from "./_components/ui/card";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./_components/ui/dialog";
 
 
  const Home = async () => {
@@ -22,6 +23,7 @@ import { Barbershop } from "@prisma/client";
   return (
     <div>
       {/* Header */}
+      
       <Header/>
       <div className="p-5">
         {/* Texto */}
