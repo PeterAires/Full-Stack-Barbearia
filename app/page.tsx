@@ -11,13 +11,9 @@ import { BookingItem } from "./_components/booking-item";
 import { useEffect, useState } from "react";
 import { Barbershop } from "@prisma/client";
 
-interface HomeProps{
-  barbershops: Barbershop[]
-  popularBarbershops: Barbershop[]
-}
-
 
  const Home = async () => {
+  
   const barbershops = await db.barbershop.findMany({}); 
     const popularBarbershops = await db.barbershop.findMany({ orderBy: { name: "desc",
   }});
