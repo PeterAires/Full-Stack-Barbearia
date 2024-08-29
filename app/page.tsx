@@ -9,14 +9,14 @@ import { quickSearchOptions } from "./_constants/search";
 import { BookingItem } from "./_components/booking-item";
 
 
- const Home = async () => {
+const Home = async () => {
   
-  const barbershops = await db.barbershop.findMany({}); 
-    const popularBarbershops = await db.barbershop.findMany({ orderBy: { name: "desc",
+const barbershops = await db.barbershop.findMany({}); 
+  const popularBarbershops = await db.barbershop.findMany({ orderBy: { name: "desc",
   }});
-  console.log(barbershops)
+console.log(barbershops)
   //Chamar meu banco de dadosssss
-  return (
+return (
     <div>
       {/* Header */}
       
