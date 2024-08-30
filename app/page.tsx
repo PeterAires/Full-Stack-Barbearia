@@ -7,6 +7,7 @@ import { db } from "./_lib/prisma";
 import BarberShopItem from "./_components/barbershop-item";
 import { quickSearchOptions } from "./_constants/search";
 import { BookingItem } from "./_components/booking-item";
+import Search from "./_components/search";
 
 
 const Home = async () => {
@@ -19,7 +20,6 @@ console.log(barbershops)
 return (
     <div>
       {/* Header */}
-      
       <Header/>
       <div className="p-5">
         {/* Texto */}
@@ -28,11 +28,8 @@ return (
         </h2>
         <p>Segunda Feira, 5 de Agosto</p>
         {/* Busca */}
-        <div className="flex items-center gap-2 mt-6">
-          <Input placeholder="Faça sua busca"/>
-          <Button>
-            <SearchIcon/>
-          </Button>
+        <div className=" mt-6">{/* para nao impactar o espaçamento do component pai */}
+          <Search/>
         </div>
         {/* Busca Rapída */}
         <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden ">

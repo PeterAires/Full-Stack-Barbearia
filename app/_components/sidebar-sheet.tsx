@@ -12,7 +12,7 @@ import { Avatar, AvatarImage } from "./ui/avatar";
 
 const SidebarSheet = () => {
 
-    const {data} = useSession()
+    const { data } = useSession()
     const handleLoguinWithGoogleClick = () => { signIn('google') }
     const handleLogOutClick = () => { signOut() }
 
