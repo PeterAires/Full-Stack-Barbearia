@@ -15,8 +15,7 @@ const Home = async () => {
 const barbershops = await db.barbershop.findMany({}); 
   const popularBarbershops = await db.barbershop.findMany({ orderBy: { name: "desc",
   }});
-console.log(barbershops)
-  //Chamar meu banco de dadosssss
+  //Chamar meu banco de dados
 return (
     <div>
       {/* Header */}
