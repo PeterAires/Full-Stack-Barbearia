@@ -36,7 +36,7 @@ const ServiceItem = ({service}: ServiceItemProps) => {
                 </div> 
         </CardContent>
     </Card>
-    
+     
     ); 
 } 
 export default ServiceItem;

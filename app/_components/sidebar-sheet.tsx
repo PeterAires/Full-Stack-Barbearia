@@ -4,18 +4,18 @@ import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon, MapIcon, MenuIcon, X } f
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { SheetContent  , SheetHeader , SheetTitle, SheetClose } from "./ui/sheet";
-import { quickSearchOptions } from "../_constants/search";
+
 import Link from "next/link";   
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage } from "./ui/avatar";
+import { quickSearchOptions } from "../_constants/search";
 
 const SidebarSheet = () => {
 
     const { data } = useSession()
     const handleLoguinWithGoogleClick = () => { signIn('google') }
     const handleLogOutClick = () => { signOut() }
-
     return ( 
                 
                 <SheetContent className=" overflow-y-auto">
@@ -86,13 +86,20 @@ const SidebarSheet = () => {
                     </div>
 
                     <div className="flex flex-col gap-2 p-5 border-b border-solid">
+                        
                         {quickSearchOptions.map((option) => (
-                            <Button key={option.title}
-                            className="justify-start gap-2" 
-                            variant='ghost'>
-                                <Image alt={option.title} src={option.imageUrl} height={18} width={18}/>
-                                {option.title}
-                            </Button>
+                            <SheetClose asChild>
+                                <Button  key={option.title}
+                                className="justify-start gap-2" 
+                                variant='ghost' asChild>
+                                    <Link href={`/barbershops?service=${option.title}`}>
+                                        <Image 
+                                        alt={option.title} 
+                                        src={option.imageUrl} height={18} width={18}/>
+                                        {option.title}
+                                    </Link>
+                                </Button>
+                            </SheetClose>
                         ))}
                     </div>
 

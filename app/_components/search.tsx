@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 
 const formSchema = z.object({//Define a estrutura e validação dos dados do formulário usando Zod
-  search: z.string().trim().min(1, { //basicamente definir o que o usuario digitou
+  title: z.string().trim().min(1, { //basicamente definir o que o usuario digitou
     message: 'Digite algo para buscar.',//mensagem de erro
   })
 })
@@ -18,14 +18,14 @@ const Search = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),//para conectar o esquema de validação do Zod ao React Hook Form.
         defaultValues: {
-          search: "", //define os valores iniciais
+          title: "", //define os valores iniciais
         },
       })
 
     const router = useRouter()
 
     const handleSubmit = (data: z.infer<typeof formSchema>) => {
-        router.push(`/barbershops/?search=${data.search}`)
+        router.push(`/barbershops/?title=${data.title}`)
     }//recebe os dados do formulario e redireciona pra uma nova Url
 
     return ( 
@@ -34,7 +34,7 @@ const Search = () => {
                 <form onSubmit={form.handleSubmit(handleSubmit)} className=" flex gap-2 ">
                     <FormField
                         control={form.control}
-                        name="search"
+                        name="title"
                         render={({ field }) => ( 
                         <FormItem className=" w-full">
                             <FormControl>
