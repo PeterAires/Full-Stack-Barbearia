@@ -1,3 +1,4 @@
+import { LocaleRouteNormalizer } from "next/dist/server/future/normalizers/locale-route-normalizer";
 import BarberShopItem from "../_components/barbershop-item";
 import Header from "../_components/header";
 import Search from "../_components/search";
@@ -13,7 +14,7 @@ interface BarbershopsPageProps{
 const BarbershopsPage = async ({ searchParams }: BarbershopsPageProps) => {
     const barbershops = await db.barbershop.findMany({
         where:{
-            OR: //se eu passar um titulo, busco pela barbearia, se nao busco por um serviso
+            OR: //se eu passar um titulo, busco pela barbearia, se nao busco por um servico
             [
                 searchParams?.title ? {
                         name: {
