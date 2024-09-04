@@ -3,19 +3,16 @@ import { Barbershop, BarbershopService, Booking } from "@prisma/client";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
-import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Calendar } from "./ui/calendar";
 import { ptBR } from 'date-fns/locale'
 import { useEffect, useState } from "react";
-import { format, set, setHours, setMinutes } from "date-fns";
+import { addDays, format, set, setHours, setMinutes } from "date-fns";
 import { Pick } from "@prisma/client/runtime/library";
 import { createBooking } from "../_actions/create-booking";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { getBookings } from "../_actions/get-bookings";
-import { date } from "zod";
-import { time } from "console";
-
 interface ServiceItemProps {
     service: BarbershopService,
     barbershop: Pick<Barbershop, 'name'>, //para pegar coisas especificas
@@ -108,6 +105,7 @@ const ServiceItem = ({service, barbershop}: ServiceItemProps) => {
           userId: (data?.user as any).id,
           date: newDate,
         })
+        handleBookingSheetOpenChange()
         toast.success('Reserva criada com sucesso')
         }
     catch(err){
@@ -149,6 +147,7 @@ const ServiceItem = ({service, barbershop}: ServiceItemProps) => {
                                     <Calendar mode="single" locale={ptBR}
                                     selected={selectDay}
                                     onSelect={handleDateSelect}
+                                    fromDate={addDays(new Date(), 1)}
                                     styles={{
                                         head_cell: {
                                           width: "100%",
@@ -216,7 +215,7 @@ const ServiceItem = ({service, barbershop}: ServiceItemProps) => {
                                           </p>
                                         </div>
 
-                                        <div className="flex items-center">
+                                        <div className="flex items-center justify-between">
                                           <h2 className=" text-sm text-gray-400">Barbearia</h2>
                                           <p className=" text-sm ">
                                               {barbershop.name}
@@ -228,10 +227,8 @@ const ServiceItem = ({service, barbershop}: ServiceItemProps) => {
                                   
                                 )}
                                   <SheetHeader className="w-full px-5 mt-5">
-                                  <SheetClose asChild>
                                     <Button onClick={handleCreateBooking} 
                                     disabled={!selectDay || !selectTime}>Confirmar</Button>
-                                  </SheetClose>
                                 </SheetHeader>
                             </SheetContent>
                         </Sheet>
