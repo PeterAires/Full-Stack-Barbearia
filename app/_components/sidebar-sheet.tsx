@@ -10,11 +10,11 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { quickSearchOptions } from "../_constants/search";
+import SignDialog from "./sign-in-dialog";
 
 const SidebarSheet = () => {
 
     const { data } = useSession()
-    const handleLoguinWithGoogleClick = () => { signIn('google') }
     const handleLogOutClick = () => { signOut() }
     return ( 
                 
@@ -23,7 +23,7 @@ const SidebarSheet = () => {
                         <SheetTitle className="text-left">Menu</SheetTitle>
                     </SheetHeader>
 
-                    <div className=" py-5 gap-3 border-b flex items-center border-solid justify-between">
+                    <div className="flex items-center justify-between gap-3 border-b border-solid py-5 ">
                         
                     
                        
@@ -39,26 +39,16 @@ const SidebarSheet = () => {
                             </div>
                            </div>
                         ) : (
-                            <div>
+                            <div className=" flex items-center justify-between gap-28">
                                 <h2 className=" font-bold text-lg">Olá, faça seu login!</h2>
                         <Dialog>
                             <DialogTrigger asChild>
-                                <Button>
+                                <Button size='icon'>
                                     <LogInIcon/>
                                 </Button>
                             </DialogTrigger>
                             <DialogContent className="w-[90%]">
-                                <DialogHeader>
-                                    <DialogTitle>Faça login na plataforma</DialogTitle>
-                                    <DialogDescription>
-                                        Conecte-se usando sua conta do Google.
-                                    </DialogDescription>
-                                </DialogHeader>
-
-                                <Button onClick={handleLoguinWithGoogleClick} variant='outline' className=" gap-2 font-bold">
-                                    <Image src='/google.png' width={18} height={18} alt="Fazer login com o Google" />
-                                    Google
-                                </Button>
+                                <SignDialog/>
                             </DialogContent>
                         </Dialog>
                             </div>
