@@ -49,6 +49,8 @@ const getTimeList = (bookings: Booking[]) => {
     const hour = Number(time.split(':')[0]) // salva as horas
     const minutes = Number(time.split(':')[1]) // salva com os minutos
 
+                                                                                                                                
+
     const hasBookingOnCurrentTime = bookings.some(
       (bookings) => //para acesarmos as propriedades de booking
       bookings.date.getHours() === hour &&
@@ -108,7 +110,7 @@ const ServiceItem = ({service, barbershop}: ServiceItemProps) => {
         const newDate = set( selectDay, { //vai ser o dia selecionado, com a hora e minutos selecionados
           minutes: minute,
           hours: hour
-        })
+        })  
 
         await createBooking({
           serviceId: service.id,
