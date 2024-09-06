@@ -14,7 +14,7 @@ interface BookingItemProps {
       }}
   }>
 }
-
+//colocar os agendamentos ja Finalizados
 export const BookingItem = ({ booking }: BookingItemProps) => {
     return ( 
     <>
