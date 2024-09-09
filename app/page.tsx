@@ -34,6 +34,9 @@ const Home = async () => {
           barbershop: true
         }
       } 
+    },
+    orderBy: {
+      date: 'asc',
     }
   }) : []
 

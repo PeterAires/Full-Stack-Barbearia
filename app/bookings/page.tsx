@@ -26,6 +26,9 @@ const Bookings = async () => {
                     barbershop: true
                 }
             }
+        },
+        orderBy: {
+            date: 'asc',
         }
     })
 
@@ -42,6 +45,9 @@ const Bookings = async () => {
                     barbershop: true
                 }
             }
+        },
+        orderBy: {
+            date: 'asc',
         }
     })
 
