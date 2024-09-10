@@ -120,7 +120,6 @@ const ServiceItem = ({service, barbershop}: ServiceItemProps) => {
         toast.success('Reserva criada com sucesso')
         }
     catch(err){
-      console.log(err)
       toast.error('erro ao criar reserva!')
     }
   }

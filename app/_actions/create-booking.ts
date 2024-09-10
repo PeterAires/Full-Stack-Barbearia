@@ -19,4 +19,5 @@ export const createBooking = async (params: createBookingParams) => {
         data: { ...params, userId: (user.user as any).id},//se nao for o userId do usuario logado nao vai deixar
     })
     revalidatePath('/barbershops/[id]')
+    revalidatePath('/bookings')
 }
