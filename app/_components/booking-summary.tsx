@@ -1,12 +1,17 @@
 import { format } from "date-fns";
 import { Card, CardContent } from "./ui/card";
+import { Barbershop, BarbershopService } from "@prisma/client";
+import { ptBR } from "date-fns/locale";
 
-interface BookingSumaryProps {}
+interface BookingSumaryProps {
+  service: Pick<BarbershopService, "name" | "price">,//o service so vai ter o name e o price
+  barbershop: Pick<Barbershop, "name">
+  selectDate: Date
+}
 
-const BookingSumary = () => {
-  return {
-    /*
-     <div className=" p-5">
+const BookingSumary = ({barbershop, service, selectDate}: BookingSumaryProps) => {
+  return (
+    <div className=" p-5">
       <Card>
         <CardContent className=" p-3 space-y-3">
           <div className="justify-between flex items-center">
@@ -22,13 +27,13 @@ const BookingSumary = () => {
           <div className="justify-between flex items-center">
             <h2 className=" text-sm text-gray-400">Data</h2>
             <p className=" text-sm ">
-              {format(selectDay, "d 'de' MMMM", { locale: ptBR })}
+              {format(selectDate, "d 'de' MMMM", { locale: ptBR })}
             </p>
           </div>
 
           <div className="justify-between flex items-center">
             <h2 className=" text-sm text-gray-400">Horário</h2>
-            <p className=" text-sm ">{selectTime}</p>
+            <p className=" text-sm ">{format(selectDate, "HH:mm")}</p>
           </div>
 
           <div className="flex items-center justify-between">
@@ -37,9 +42,8 @@ const BookingSumary = () => {
           </div>
         </CardContent>
       </Card>
-    </div>  
-    */
-  };
+    </div>
+  );
 };
 //Shift + Alt + F
 export default BookingSumary;
