@@ -69,7 +69,7 @@ export const BookingItem = ({ booking }: BookingItemProps) => {
   return (
     <>
       <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange}>
-        <SheetTrigger className=" w-full" asChild>
+        <SheetTrigger className=" w-full min-w-[90%]" asChild>
           <Card className=" min-w-[90%]">
             <CardContent className="flex justify-between p-0">
               {/* Esquerda */}
