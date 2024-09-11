@@ -1,13 +1,13 @@
 'use client'
 
-import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon, MapIcon, MenuIcon, X } from "lucide-react";
+import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { SheetContent  , SheetHeader , SheetTitle, SheetClose } from "./ui/sheet";
 
 import Link from "next/link";   
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
+import {  signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { quickSearchOptions } from "../_constants/search";
 import SignDialog from "./sign-in-dialog";

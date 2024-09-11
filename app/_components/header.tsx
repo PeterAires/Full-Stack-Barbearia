@@ -2,7 +2,7 @@ import { CalendarIcon, HomeIcon, LogOutIcon, MapIcon, MenuIcon, X } from "lucide
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
-import { SheetContent , SheetTrigger , SheetHeader , SheetTitle, Sheet, SheetClose } from "./ui/sheet";
+import { SheetTrigger , Sheet } from "./ui/sheet";
 import SidebarSheet from "./sidebar-sheet";
 import Link from "next/link";
 
