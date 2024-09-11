@@ -20,6 +20,7 @@ import { getBookings } from "../_actions/get-bookings";
 import SignDialogg from "./sign-in-dialog";
 import { Dialog, DialogContent } from "./ui/dialog";
 import BookingSumary from "./booking-summary";
+import { useRouter } from "next/navigation";
 interface ServiceItemProps {
   service: BarbershopService;
   barbershop: Pick<Barbershop, "name">; //para pegar coisas especificas
@@ -55,6 +56,7 @@ interface getTimeListProps {
 }
 
 const getTimeList = ({ bookings, selectDay }: getTimeListProps) => {
+
   return TIME_LIST.filter((time) => {
     //pegue todas as horas da lista e veriique se tem agendamentos
     const hour = Number(time.split(":")[0]); // salva as horas
@@ -83,8 +85,9 @@ const getTimeList = ({ bookings, selectDay }: getTimeListProps) => {
 };
 
 const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
-  const [signDialogIsOpen, setSignDialogIsOpen] = useState(false);
   const { data } = useSession();
+  const router = useRouter()
+  const [signDialogIsOpen, setSignDialogIsOpen] = useState(false);
   const [selectDay, setSelectDat] = useState<Date | undefined>(undefined);
   const [selectTime, setSelectTime] = useState<string | undefined>(undefined);
   const [dayBookings, setDayBookings] = useState<Booking[]>([]);
@@ -141,7 +144,12 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
         date: selectedDate,
       });
       handleBookingSheetOpenChange();
-      toast.success("Reserva criada com sucesso");
+      toast.success("Reserva criada com sucesso", {
+        action: {
+          label: "Ver agendamentos",
+          onClick: () => router.push('/bookings'),
+        }
+      });
     } catch (err) {
       toast.error("erro ao criar reserva!");
     }
