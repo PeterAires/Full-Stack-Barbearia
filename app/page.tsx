@@ -11,6 +11,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./_lib/auth";
 import { ptBR } from "date-fns/locale";
 import { format } from "date-fns";
+import { json } from "stream/consumers";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -104,7 +105,7 @@ const Home = async () => {
             </h2>
             <div className=" flex overflow-x-auto gap-3  [&::-webkit-scrollbar]:hidden ">
               {confirmedBookings.map((booking) => (
-                <BookingItem key={booking.id} booking={booking} />
+                <BookingItem key={booking.id} booking={JSON.parse(JSON.stringify(booking))} />//converter pra string e depois pra json
               ))}
             </div>
           </>
