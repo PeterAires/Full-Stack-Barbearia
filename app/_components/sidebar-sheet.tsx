@@ -68,6 +68,7 @@ const SidebarSheet = () => {
                                 </Link>   
                             </Button>
                         </SheetClose>
+                        {data?.user ? 
                         <Button 
                         className="justify-start gap-2" variant='ghost' asChild>
                             <Link href={'/bookings/'}>
@@ -75,6 +76,7 @@ const SidebarSheet = () => {
                                 Agendamentos
                             </Link>
                         </Button>
+                        : ''}
                     </div>
 
                     <div className="flex flex-col gap-2 p-5 border-b border-solid">
