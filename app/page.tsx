@@ -58,9 +58,8 @@ const Home = async () => {
           <span className=" capitalize">
             {format(new Date(), "EEEE, dd", { locale: ptBR })}
           </span>
-          <span>&nbsp;de&nbsp;</span>
           <span className=" capitalize">
-            {format(new Date(), "MMMM", { locale: ptBR })}
+            {format(new Date(), " 'de' MMMM", { locale: ptBR })}
           </span>
         </p>
 
