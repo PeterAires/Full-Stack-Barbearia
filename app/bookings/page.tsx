@@ -5,6 +5,8 @@ import { authOptions } from "../_lib/auth";
 import { notFound } from "next/navigation";
 import { userInfo } from "os";
 import { BookingItem } from "../_components/booking-item";
+import { getConfirmedBookings } from "../_data/get-confirmed-bookings";
+import { getConcluedBookings } from "../_data/get-conclued-bookings";
 
 const Bookings = async () => {
   const session = await getServerSession(authOptions);
@@ -12,45 +14,9 @@ const Bookings = async () => {
     return notFound();
   } //mostrar popup de loguin
 
-  const confirmedBookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as any).id,
-      date: {
-        gte: new Date(),
-      },
-    },
-    include: {
-      //incluimos o service no booking, e o barbershop no service
-      service: {
-        include: {
-          barbershop: true,
-        },
-      },
-    },
-    orderBy: {
-      date: "asc",
-    },
-  });
+  const confirmedBookings = await getConfirmedBookings();
 
-  const concludedBookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as any).id,
-      date: {
-        lt: new Date(),
-      },
-    },
-    include: {
-      //incluimos o service no booking, e o barbershop no service
-      service: {
-        include: {
-          barbershop: true,
-        },
-      },
-    },
-    orderBy: {
-      date: "asc",
-    },
-  });
+  const concludedBookings = await getConcluedBookings();
 
   return (
     <>
@@ -63,7 +29,10 @@ const Bookings = async () => {
               Confirmados
             </h2>
             {confirmedBookings.map((booking) => (
-              <BookingItem key={booking.id} booking={JSON.parse(JSON.stringify(booking))} />
+              <BookingItem
+                key={booking.id}
+                booking={JSON.parse(JSON.stringify(booking))}
+              />
             ))}
           </>
         )}
@@ -73,7 +42,10 @@ const Bookings = async () => {
               Finalizados
             </h2>
             {concludedBookings.map((booking) => (
-              <BookingItem key={booking.id} booking={JSON.parse(JSON.stringify(booking))} />
+              <BookingItem
+                key={booking.id}
+                booking={JSON.parse(JSON.stringify(booking))}
+              />
             ))}
           </>
         )}
