@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className="dark">
@@ -23,10 +23,10 @@ export default function RootLayout({
         <AuthProvider>
           <div className=" flex flex-col h-full">
             <div className=" flex-1">{children}</div>
-            <Footer/>
+            <Footer />
           </div>
         </AuthProvider>
-        <Toaster/>
+        <Toaster />
       </body>
     </html>
   );

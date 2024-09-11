@@ -80,8 +80,8 @@ const SidebarSheet = () => {
                     <div className="flex flex-col gap-2 p-5 border-b border-solid">
                         
                         {quickSearchOptions.map((option) => (
-                            <SheetClose asChild>
-                                <Button  key={option.title}
+                            <SheetClose asChild key={option.title}>
+                                <Button 
                                 className="justify-start gap-2" 
                                 variant='ghost' asChild>
                                     <Link href={`/barbershops?service=${option.title}`}>
