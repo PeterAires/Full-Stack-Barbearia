@@ -1,0 +1,28 @@
+Prisma
+
+orm - mapeamento de objetos relacionas (mapiar em objeto na linguagem que voce esta usando)
+	nisso ele cria todas as tipagens pra usar (ex: prisma.user)
+
+npx prisma init - vai criar uma estrutura
+	.env - string de conexao pro banco de dados
+	schema.prisma - onde se é criado as tabelas
+
+npx prisma generate - gerar o modelo
+	criou as interaçoes em typeScript
+
+npx prisma db push - puxou pro banco de dados, mas de uma forma mais rapida e pior
+
+
+endereços Endereço[] - que uma pessoa pode ter varios endereços (ta errado, tem que usar o >format document)
+
+conect - se o endereço ja existe, voce pode conectar a essa pessoas ex
+create - criar
+conectOrCreate: ele vai procurar pra você
+where: vai procurar
+findMany: busca todos
+
+Migrações de schema
+	atualizar o banco de dados quando se faz alteraçoes
+	prisma migrate dev - melhor em produção, mais seguro e historico, mesma função do db push
+
+npx prisma db pull - criar schema a partir da banco de dados antigo, ou puxar infos de outros
